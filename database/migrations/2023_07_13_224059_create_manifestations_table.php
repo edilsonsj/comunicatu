@@ -13,14 +13,7 @@ return new class extends Migration
     {
         Schema::create('manifestations', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
-            $table->string('type');
-            $table->string('status');
-            $table->double('lat', 8, 8);
-            $table->double('lon', 8, 8);
-            $table->timestamp('finished_at');
-            $table->timestamps();
-            
+
             $table->foreignId('user_id')
                   ->constrained()
                   ->onUpdate('cascade')
@@ -30,6 +23,15 @@ return new class extends Migration
                   ->constrained()
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
+
+            $table->text('description');
+            $table->string('type');
+            $table->string('status');
+            $table->double('lat', 8, 8);
+            $table->double('lon', 8, 8);
+            $table->timestamp('finished_at');
+            $table->timestamps();
+            
         });
     }
 
