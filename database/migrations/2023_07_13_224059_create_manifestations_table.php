@@ -27,9 +27,9 @@ return new class extends Migration
             $table->text('description');
             $table->string('type');
             $table->string('status');
-            $table->double('lat', 8, 8);
-            $table->double('lon', 8, 8);
-            $table->timestamp('finished_at');
+            $table->double('lat', 10, 6);
+            $table->double('lon', 10, 6);
+            $table->timestamp('finished_at')->nullable();
             $table->timestamps();
             
         });
