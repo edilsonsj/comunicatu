@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [ManifestationController::class, 'index']);
-Route::get('/manifestations/create', [ManifestationController::class, 'create']);
+Route::get('/manifestations/create', [ManifestationController::class, 'create'])->middleware('auth');
+Route::post('/manifestations', [ManifestationController::class, 'store']);
 
 
 Route::middleware([

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Manifestation;
+use Illuminate\Support\Facades\DB;
 
 class ManifestationController extends Controller
 {
@@ -15,9 +16,11 @@ class ManifestationController extends Controller
 
     }
 
-    public function create () {
+    public function create () { 
 
-        return view('manifestations.create');
+        $assignments = DB::table('departments_assignments')->pluck('assignment');
+
+        return view('manifestations.create', ['assignments' => $assignments]);
 
     }
 
@@ -25,8 +28,29 @@ class ManifestationController extends Controller
 
         $manifestation = new Manifestation;
 
-        $manifestation->column = $request->form_name;
-        
+        $manifestation->description = $request->description;
+        $manifestation->type = $request->type;
+        $manifestation->status = 'Open';
+        $manifestation->department_id = 1;
 
+        $manifestation->lat = $request->lat;
+        $manifestation->lon = $request->lng;
+
+        //Image upload
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+
+            $request_image = $request->image;
+            $extension = $request_image->extension();
+            $image_name = md5($request_image->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $request_image->move(public_path('img/manifestations'), $image_name);
+            $manifestation->image = $image_name;
+        }
+
+        $user = auth()->user();
+        $manifestation->user_id = $user->id;
+
+        $manifestation->save();
+
+        return redirect('/')->with('msg', 'Manifestacao criada com sucesso!');
     }
 }

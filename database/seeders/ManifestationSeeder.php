@@ -34,6 +34,7 @@ class ManifestationSeeder extends Seeder
             $status = $faker->randomElement($statuses);
             $lat = $faker->latitude($latitudeMin, $latitudeMax);
             $lon = $faker->longitude($longitudeMin, $longitudeMax);
+            $image = $faker->word . '.' . 'png';
             $finishedAt = $status === 'Closed' ? $faker->dateTimeBetween('-1 year', 'now') : null;
 
             DB::table('manifestations')->insert([
@@ -44,6 +45,7 @@ class ManifestationSeeder extends Seeder
                 'status' => $status,
                 'lat' => $lat,
                 'lon' => $lon,
+                'image' => $image,
                 'finished_at' => $finishedAt,
                 'created_at' => now(),
                 'updated_at' => now(),
