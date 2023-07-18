@@ -53,4 +53,8 @@ class ManifestationController extends Controller
 
         return redirect('/')->with('msg', 'Manifestacao criada com sucesso!');
     }
+
+    public function showMap () {
+        return view('leaflet');
+    }
 }

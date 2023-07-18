@@ -41,6 +41,7 @@ li a:hover:not(.active) {
 
   @auth
   <li><a href="/manifestations/create">Fazer manifestacao</a></li>
+  <li><a href="/manifestations/show">Minhas manifestacoes</a></li>
   <li><a href="/dashboard">Minha conta</a></li>
   @endauth
 
