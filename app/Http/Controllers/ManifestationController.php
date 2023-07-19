@@ -55,6 +55,32 @@ class ManifestationController extends Controller
     }
 
     public function showMap () {
-        return view('leaflet');
+        $manifestations = Manifestation::select('lat', 'lon')->get();
+        return view('leaflet', ['manifestations' => $manifestations]);
+    }
+
+    public function getMarkers () {
+        $coordinates = Manifestation::all();
+
+        $geojson = [
+            'type' => 'FeatureCollection',
+            'features' => [],
+        ];
+
+        foreach ($coordinates as $coordinate) {
+            $geojson['features'][] = [
+                'type' => 'Feature',
+                'geometry' => [
+                    'type' => 'Point',
+                    'coordinates' => [$coordinate->lon, $coordinate->lat],
+                ],
+                'properties' => [
+                    'name' => $coordinate->type,
+                    'description' => $coordinate->description,
+                ],
+            ];
+        }
+
+        return view('leaflet')->with('geojson', json_encode($geojson));
     }
 }
