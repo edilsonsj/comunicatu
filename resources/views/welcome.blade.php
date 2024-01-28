@@ -5,11 +5,13 @@
 
 @section('content')
 
-<h1>Visao geral</h1>
+<h1>Visao geralsssssssssss</h1>
 
-<div id="map" style="height: 900px; width: 100%;" class="my-3"></div>
+<div id="map" style="height: 180px;" class="my-3"></div>
 
-<script>
+
+
+{{-- <script>
     let map;
 
     function initMap() {
@@ -28,6 +30,9 @@
         @endforeach
     }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLE_MAPS_API_KEY')}}&callback=initMap" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLE_MAPS_API_KEY')}}&callback=initMap" type="text/javascript"></script> --}}
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script>
 @endsection

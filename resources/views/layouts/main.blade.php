@@ -1,59 +1,70 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style>
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-li {
-  float: left;
-}
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
+        li {
+            float: left;
+        }
 
-li a:hover:not(.active) {
-  background-color: #111;
-}
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
 
-.active {
-  background-color: #04AA6D;
-}
-</style>
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
 
-<title>@yield('title')</title>
+        .active {
+            background-color: #04AA6D;
+        }
+    </style>
+
+
+    <title>@yield('title')</title>
 
 </head>
+
 <body>
 
-<ul>
-  <li><a class="active" href="/">Home</a></li>
+    <ul>
+        <li><a class="active" href="/">Home</a></li>
 
-  @auth
-  <li><a href="/manifestations/create">Fazer manifestacao</a></li>
-  <li><a href="/manifestations/show">Minhas manifestacoes</a></li>
-  <li><a href="/dashboard">Minha conta</a></li>
-  @endauth
+        @auth
+            <li><a href="/manifestations/create">Fazer manifestacao</a></li>
+            <li><a href="/manifestations/show">Minhas manifestacoes</a></li>
+            <li><a href="/dashboard">Minha conta</a></li>
+        @endauth
 
-  @guest
-  <li><a href="/login">Entrar</a></li>
-  <li><a href="/register">Fazer cadastro</a></li>
-  @endguest
+        @guest
+            <li><a href="/login">Entrar</a></li>
+            <li><a href="/register">Fazer cadastro</a></li>
+        @endguest
 
-</ul>
+    </ul>
 
-@yield('content')
+    @yield('content')
 </body>
+
+
 
 
 </html>
