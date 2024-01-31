@@ -19,6 +19,13 @@ Route::get('/', [ManifestationController::class, 'index']);
 Route::get('/manifestations/create', [ManifestationController::class, 'create'])->middleware('auth');
 Route::post('/manifestations', [ManifestationController::class, 'store']);
 
+Route::get('manifestations/show', [ManifestationController::class, 'show']);
+Route::get('manifestations/edit/{id}', [ManifestationController::class, 'edit']);
+
+Route::put('/manifestations/update/{id}', [ManifestationController::class, 'update']);
+
+Route::delete('manifestations/{id}', [ManifestationController::class, 'destroy']);
+
 Route::get('/leaflet', [ManifestationController::class, 'getMarkers']);
 
 Route::middleware([
@@ -27,6 +34,6 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('/');
     })->name('dashboard');
 });
