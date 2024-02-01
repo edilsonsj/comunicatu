@@ -89,7 +89,9 @@ class ManifestationController extends Controller
 
     public function show()
     {
+
         $user_id = auth()->user()->id;
+        
         $user_manifestations = Manifestation::where('user_id', $user_id)
             ->select('*')->get();
         return view('manifestations.show', ['user_manifestations' => $user_manifestations]);

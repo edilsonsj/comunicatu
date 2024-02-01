@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ManifestationController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,12 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('/');
+        return view('/dashboard');
     })->name('dashboard');
 });
+
+
+// Management
+
+Route::get('management/show', [ManagementController::class, 'index']);
+Route::get('management/show/{type?}', [ManagementController::class, 'index'])->name('management.type');
