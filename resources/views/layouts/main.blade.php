@@ -9,16 +9,25 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .navbar{}
+
         ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: #000000;
         }
 
         li {
-            float: left;
+            display: inline-block;
+            /* Alterado de float: left; */
         }
 
         li a {
@@ -34,7 +43,9 @@
         }
 
         .active {
-            background-color: #04AA6D;
+            background-color: #ffffff;
+            color: #000000;
+            border: 2px solid #000000;
         }
 
         table {
@@ -53,6 +64,54 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+
+        .container {
+            width: 80%;
+            max-width: 880px;
+            border: 1px solid rgb(207, 207, 207);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            /* Empilhamento vertical */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container-item {
+            width: 100%;
+            
+            margin-top: 10%;
+            margin-bottom: 20px;
+            /* Adicione espaço entre os itens */
+        }
+
+        .map-container {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+            /* Adicione espaço inferior para separar o mapa da tabela */
+        }
+
+        table {
+            width: 100%;
+            /* Ajusta a largura da tabela ao contêiner pai */
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+        }
+
+        #edit-button {
+            color: rgb(0, 0, 0);
+        }
+
+        #delete-button {
+            text-decoration: none;
+            background: rgb(219, 82, 82);
+            color: rgb(255, 255, 255);
+            border: 2px solid red;
+            border-radius: 5px;
+        }
+
+        /* Outros estilos da tabela... */
     </style>
 
 
@@ -62,21 +121,22 @@
 
 <body>
 
-    <ul>
-        <li><a class="active" href="/">Home</a></li>
+    <div class="navbar">
+        <ul>
+            <li><a class="active" href="/">Home</a></li>
 
-        @auth
-            <li><a href="/manifestations/create">Fazer manifestacao</a></li>
-            <li><a href="/manifestations/show">Minhas manifestacoes</a></li>
-            <li><a href="/dashboard">Minha conta</a></li>
-        @endauth
+            @auth
+                <li><a href="/manifestations/create">Fazer manifestacao</a></li>
+                <li><a href="/manifestations/show">Minhas manifestacoes</a></li>
+                <li><a href="/dashboard">Minha conta</a></li>
+            @endauth
 
-        @guest
-            <li><a href="/login">Entrar</a></li>
-            <li><a href="/register">Fazer cadastro</a></li>
-        @endguest
-
-    </ul>
+            @guest
+                <li><a href="/login">Entrar</a></li>
+                <li><a href="/register">Fazer cadastro</a></li>
+            @endguest
+        </ul>
+    </div>
 
     @yield('content')
 </body>
