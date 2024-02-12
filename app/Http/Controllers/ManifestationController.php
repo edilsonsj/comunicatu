@@ -31,7 +31,7 @@ class ManifestationController extends Controller
 
         $manifestation->description = $request->description;
         $manifestation->type = $request->type;
-        $manifestation->status = 'Open';
+        $manifestation->status = 'Em aberto';
         $manifestation->department_id = 1;
 
         $manifestation->lat = $request->lat;

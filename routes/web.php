@@ -20,7 +20,7 @@ Route::get('/', [ManifestationController::class, 'index']);
 Route::get('/manifestations/create', [ManifestationController::class, 'create'])->middleware('auth');
 Route::post('/manifestations', [ManifestationController::class, 'store']);
 
-Route::get('manifestations/show', [ManifestationController::class, 'show']);
+Route::get('manifestations/show', [ManifestationController::class, 'show'])->middleware('auth');
 Route::get('manifestations/edit/{id}', [ManifestationController::class, 'edit']);
 
 Route::put('/manifestations/update/{id}', [ManifestationController::class, 'update']);
@@ -34,13 +34,13 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('/dashboard');
-    })->name('dashboard');
+    Route::get('/welcome', function () {
+        return view('welcome');
+    })->name('welcome');
 });
 
 
 // Management
 
-Route::get('management/show', [ManagementController::class, 'index']);
+Route::get('management/show', [ManagementController::class, 'index'])->middleware('auth');
 Route::get('management/show/{type?}', [ManagementController::class, 'index'])->name('management.type');

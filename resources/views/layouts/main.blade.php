@@ -111,6 +111,16 @@
             border-radius: 5px;
         }
 
+        #submit-button {
+            font-size: 20px;
+            padding: 10px;
+            margin: 20px 0px 30px 0px;
+            color: #ffffff;
+            background: #000000;
+            display: flex;
+            justify-content: flex-end;
+        }
+
         /* Outros estilos da tabela... */
     </style>
 
@@ -123,7 +133,7 @@
 
     <div class="navbar">
         <ul>
-            <li><a class="active" href="/">Home</a></li>
+            <li><a class="active" href="/">ComuniCatu</a></li>
 
             @auth
                 <li><a href="/manifestations/create">Fazer manifestacao</a></li>

@@ -17,7 +17,7 @@ class ManifestationSeeder extends Seeder
         $faker = Faker::create('pt_BR');
         $total_records = 50;
 
-        $statuses = ['Open', 'In Progress', 'Closed'];
+        $statuses = ['Em aberto', 'Em andamento', 'Finalizada'];
         $types = ['Complaint', 'Request', 'Feedback'];
 
         // Coordenadas aproximadas de Catu-Ba

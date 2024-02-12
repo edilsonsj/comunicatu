@@ -22,61 +22,10 @@
 
         <div class="container-item map-container">
 
-            <div id="map" style="height:500px; width: 100%" class="my-3">
-                <script>
-                    var user_manifestations = @json($user_manifestations);
-
-                    const map = L.map('map').setView([-12.354791203644778, -38.389331635747624], 15);
-
-                    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
-                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                    }).addTo(map);
-
-                    const marker = L.marker([-12.354791203644778, -38.389331635747624]).addTo(map)
-                        .bindPopup('<b>Hello world!</b><br />I am a popup.').openPopup();
-
-                    /*                 const circle = L.circle([51.508, -0.11], {
-                        color: 'red',
-                        fillColor: '#f03',
-                        fillOpacity: 0.5,
-                        radius: 500
-                    }).addTo(map).bindPopup('I am a circle.');
-                    
-                    const polygon = L.polygon([
-                        [51.509, -0.08],
-                        [51.503, -0.06],
-                        [51.51, -0.047]
-                    ]).addTo(map).bindPopup('I am a polygon.');
-                    
-                    */
-                    const popup = L.popup()
-                        .setLatLng([-12.353, -38.39])
-                        .setContent('I am a standalone popup.')
-                        .openOn(map);
-
-                    function onMapClick(e) {
-                        popup
-                            .setLatLng(e.latlng)
-                            .setContent(`You clicked the map at ${e.latlng.toString()}`)
-                            .openOn(map);
-                    }
-
-
-                    map.on('click', onMapClick);
-
-
-                    user_manifestations.forEach(function(coord) {
-                        L.marker([coord.lat, coord.lon]).addTo(map)
-                            .bindPopup(coord.type, coord.status).openPopup();
-                    });
-                </script>
-
-            </div>
+            <div id="map" style="height:500px; width: 100%" class="my-3"></div>
 
         </div>
         <div class="container-item">
-
 
             <table>
                 <tr>
@@ -110,4 +59,27 @@
             </table>
         </div>
     </div>
+
+    <script>
+        var user_manifestations = @json($user_manifestations);
+
+        const map = L.map('map').setView([-12.354791203644778, -38.389331635747624], 14);
+
+        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        user_manifestations.forEach(function(manifestation) {
+            const popupContent = `
+            <b>ID:</b> ${manifestation.id}<br>
+            <b>Tipo:</b> ${manifestation.type}<br>
+            <b>Status:</b> ${manifestation.status}<br>
+            <b>Descrição:</b> ${manifestation.description}<br>
+            <b>Data de Criação:</b> ${manifestation.created_at}<br>
+        `;
+            L.marker([manifestation.lat, manifestation.lon]).addTo(map)
+                .bindPopup(popupContent);
+        });
+    </script>
 @endsection
