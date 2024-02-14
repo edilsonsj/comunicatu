@@ -15,7 +15,7 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        .navbar{}
+        .navbar {}
 
         ul {
             list-style-type: none;
@@ -79,7 +79,7 @@
 
         .container-item {
             width: 100%;
-            
+
             margin-top: 10%;
             margin-bottom: 20px;
             /* Adicione espaço entre os itens */
@@ -119,6 +119,26 @@
             background: #000000;
             display: flex;
             justify-content: flex-end;
+        }
+
+        .manifestation-types-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .manifestation-type-button {
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        #type-button {
+            text-decoration: none;
+            background: #ffffff;
+            color: #000000;
+            font-weight: bold;
+            font-size: 15px;
         }
 
         /* Outros estilos da tabela... */
