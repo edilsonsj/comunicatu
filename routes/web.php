@@ -29,6 +29,8 @@ Route::delete('manifestations/{id}', [ManifestationController::class, 'destroy']
 
 Route::get('/leaflet', [ManifestationController::class, 'getMarkers']);
 
+Route::get('/manifestations/show/{id}', [ManifestationController::class, 'getById']);
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

@@ -91,7 +91,7 @@ class ManifestationController extends Controller
     {
 
         $user_id = auth()->user()->id;
-        
+
         $user_manifestations = Manifestation::where('user_id', $user_id)
             ->select('*')->get();
         return view('manifestations.show', ['user_manifestations' => $user_manifestations]);
@@ -129,5 +129,12 @@ class ManifestationController extends Controller
     {
         Manifestation::findOrFail($id)->delete();
         return redirect('manifestations/show')->with('msg', 'Manifestação deletada com sucesso');
+    }
+
+
+    public function getById($id)
+    {
+        $manifestation = Manifestation::findOrFail($id);
+        return view('manifestations.show-manifestation-details', ['manifestation'=>$manifestation]);
     }
 }

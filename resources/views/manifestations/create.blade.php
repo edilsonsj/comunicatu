@@ -6,7 +6,7 @@
 
     <div class="container">
 
-        <h1>fazer manifestacao</h1>
+        <h1>Cadastre sua manifestação</h1>
 
         <form action="/manifestations" method="post" enctype="multipart/form-data">
             @csrf
@@ -32,7 +32,7 @@
             <input type="hidden" name="lat" id="lat">
             <input type="hidden" name="lng" id="lng">
 
-            <div id="map" style="height:400px; width: 800px;" class="my-3"></div>
+            <div id="map" style="height:400px; max-width: 800px;" class="my-3"></div>
 
             <script src='https://unpkg.com/leaflet@1.8.0/dist/leaflet.js' crossorigin=''></script>
 
