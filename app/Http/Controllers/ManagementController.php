@@ -8,23 +8,38 @@ use Illuminate\Support\Facades\DB;
 
 class ManagementController extends Controller
 {
-    public function index($type = null)
+    public function index(Request $request)
     {
         $query = Manifestation::query();
 
-        if ($type) {
-            $query->where('type', $type);
+        // Verificar e aplicar filtro por tipo, se fornecido
+        if ($request->filled('type')) {
+            $query->where('type', $request->input('type'));
         }
-        $manifestations = $query->get();
-        
-        $manifestations_types = DB::table('manifestations')
-            ->pluck('type')
-            ->unique();
 
-        return view('management.show', 
-            ['manifestations' => $manifestations], 
-            ['manifestations_types' => $manifestations_types],
-        );
+        // Verificar e aplicar filtro por status, se fornecido
+        if ($request->filled('status')) {
+            $query->where('status', $request->input('status'));
+        }
+
+        // Verificar e aplicar filtro por data de início, se fornecido
+        if ($request->filled('start_date')) {
+            $query->whereDate('created_at', '>=', $request->input('start_date'));
+        }
+
+        // Verificar e aplicar filtro por data de término, se fornecido
+        if ($request->filled('end_date')) {
+            $query->whereDate('created_at', '<=', $request->input('end_date'));
+        }
+
+        // Executar a consulta para obter as manifestações
+        $manifestations = $query->get();
+
+        // Obter os tipos únicos de manifestações para a seleção de filtro na view
+        $manifestation_types = Manifestation::pluck('type')->unique();
+
+        // Retornar a view com as manifestações e tipos de manifestações
+        return view('management.show', compact('manifestations', 'manifestation_types'));
     }
 
     public function getManifestationsByType($type)

@@ -27,7 +27,7 @@
             </script>
         </div>
 
-        <div class="manifestation-types-container">
+        {{-- <div class="manifestation-types-container">
             @foreach ($manifestations_types as $type)
                 <span class="manifestation-type-button">
                     <button>
@@ -37,7 +37,36 @@
                     </button>
                 </span>
             @endforeach
+        </div> --}}
+
+        <div class="filters-container">
+            <form action="{{ route('management.index') }}" method="GET">
+                <label for="type">Tipo:</label>
+                <select name="type" id="type">
+                    <option value="">Todos</option>
+                    @foreach ($manifestation_types as $type)
+                        <option value="{{ $type }}">{{ $type }}</option>
+                    @endforeach
+                </select>
+                <br>
+                <label for="status">Status:</label>
+                <select name="status" id="status">
+                    <option value="">Todos</option>
+                    <option value="Aberto">Aberto</option>
+                    <option value="Em andamento">Em andamento</option>
+                    <option value="Concluído">Concluído</option>
+                </select>
+                <br>
+                <label for="start_date">Data de início:</label>
+                <input type="date" id="start_date" name="start_date">
+                <br>    
+                <label for="end_date">Data de término:</label>
+                <input type="date" id="end_date" name="end_date">
+                <br>
+                <button type="submit">Filtrar</button>
+            </form>
         </div>
+
 
         <table>
             <tr>

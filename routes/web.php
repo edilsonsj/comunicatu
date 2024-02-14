@@ -45,4 +45,4 @@ Route::middleware([
 // Management
 
 Route::get('management/show', [ManagementController::class, 'index'])->middleware('auth');
-Route::get('management/show/{type?}', [ManagementController::class, 'index'])->name('management.type');
+Route::get('management/show/{type?}', [ManagementController::class, 'index'])->name('management.index');
