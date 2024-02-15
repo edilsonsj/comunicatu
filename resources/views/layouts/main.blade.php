@@ -17,6 +17,8 @@
 
         .navbar {}
 
+
+
         ul {
             list-style-type: none;
             margin: 0;
@@ -166,6 +168,11 @@
                 <li><a href="/register">Fazer cadastro</a></li>
             @endguest
         </ul>
+        @if (session('msg'))
+            <div class="msg"
+                style="background: green; color:greenyellow; border-radius:3px; width:100%; height: 30px; margin:5px;">
+                <p class="msg">{{ session('msg') }}</p>
+        @endif
     </div>
 
     @yield('content')
