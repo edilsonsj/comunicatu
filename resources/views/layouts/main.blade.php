@@ -160,13 +160,17 @@
             @auth
                 <li><a href="/manifestations/create">Fazer manifestacao</a></li>
                 <li><a href="/manifestations/show">Minhas manifestacoes</a></li>
-                <li><a href="/dashboard">Minha conta</a></li>
+                @if (auth()->user()->role === \App\Models\User::ROLE_ADMIN)
+                    <li><a href="/management/show">Overview</a></li>
+                @endif
+                <li><a href="/profile/show">Minha conta</a></li>
             @endauth
 
             @guest
                 <li><a href="/login">Entrar</a></li>
                 <li><a href="/register">Fazer cadastro</a></li>
             @endguest
+
         </ul>
         @if (session('msg'))
             <div class="msg"

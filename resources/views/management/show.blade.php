@@ -48,9 +48,9 @@
                 <label for="status">Status:</label>
                 <select name="status" id="status">
                     <option value="">Todos</option>
-                    <option value="Aberto">Aberto</option>
+                    <option value="Em aberto">Em Aberto</option>
                     <option value="Em andamento">Em andamento</option>
-                    <option value="Concluído">Concluído</option>
+                    <option value="Finalizada">Finalizada</option>
                 </select>
                 <br>
                 <label for="start_date">Data de início:</label>
