@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ManifestationController;
 use Illuminate\Support\Facades\Route;
@@ -41,8 +42,11 @@ Route::middleware([
     })->name('welcome');
 });
 
+Route::get('/access-denied', [AdminController::class, 'accessDenied']);
 
 // Management
 
-Route::get('management/show', [ManagementController::class, 'index'])->middleware('auth');
-Route::get('management/show/{type?}', [ManagementController::class, 'index'])->name('management.index');
+Route::middleware(['web', 'admin'])->group(function () {
+    Route::get('management/show', [ManagementController::class, 'index'])->middleware('auth');
+    Route::get('management/show/{type?}', [ManagementController::class, 'index'])->name('management.index');
+});

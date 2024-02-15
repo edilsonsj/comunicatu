@@ -17,6 +17,9 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    
+    const ROLE_ADMIN = 'admin';
+    const ROLE_CITIZEN = 'citizen';
 
     /**
      * The attributes that are mass assignable.
