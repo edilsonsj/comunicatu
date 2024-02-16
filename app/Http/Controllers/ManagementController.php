@@ -53,4 +53,22 @@ class ManagementController extends Controller
 
         return redirect('/management/show', ['$manifestations_types' => $manifestations_types]);
     }
+
+    public function editAdmin($id)
+    {
+        $assignments = DB::table('departments_assignments')->pluck('assignment');
+
+        $manifestation = Manifestation::findOrFail($id);
+        return view('management.edit', compact('manifestation'), ['assignments' => $assignments]);
+    }
+
+
+    public function update(Request $request)
+    {
+        $data = $request->all();
+
+        Manifestation::findOrFail($request->id)->update($data);
+
+        return redirect('manifestations/show')->with('msg', 'Manifestação alterada com sucesso!');
+    }
 }

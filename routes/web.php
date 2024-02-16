@@ -49,4 +49,6 @@ Route::get('/access-denied', [AdminController::class, 'accessDenied']);
 Route::middleware(['web', 'admin'])->group(function () {
     Route::get('management/show', [ManagementController::class, 'index'])->middleware('auth');
     Route::get('management/show/{type?}', [ManagementController::class, 'index'])->name('management.index');
+    Route::get('/management/edit/{id}', [ManagementController::class, 'editAdmin']);
+    Route::put('/management/update/{id}', [ManagementController::class, 'update']);
 });
