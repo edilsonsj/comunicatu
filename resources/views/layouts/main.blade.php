@@ -111,6 +111,7 @@
             color: rgb(255, 255, 255);
             border: 2px solid red;
             border-radius: 5px;
+            cursor: pointer;
         }
 
         #submit-button {

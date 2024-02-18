@@ -58,4 +58,8 @@ Route::middleware(['web', 'admin'])->group(function () {
     Route::get('/departments/create', [DepartmentController::class, 'create']);
     Route::post('/departments', [DepartmentController::class, 'store']);
     Route::delete('/departments/{id}', [DepartmentController::class, 'destroy']);
+    Route::put('/departments/{id}', [DepartmentController::class, 'update'])->name('departments.update');
+    Route::delete('/departments/{id}', [DepartmentController::class, 'destroy'])->name('departments.destroy');
+    Route::delete('/departments_assignment/{id}', [DepartmentController::class, 'destroyAssignment'])->name('departments_assignment.destroy');
+
 });
