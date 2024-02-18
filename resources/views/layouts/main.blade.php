@@ -162,6 +162,8 @@
                 <li><a href="/manifestations/show">Minhas manifestacoes</a></li>
                 @if (auth()->user()->role === \App\Models\User::ROLE_ADMIN)
                     <li><a href="/management/show">Overview</a></li>
+                    <li><a href="/departments/show">Departamentos</a></li>
+                    <li><a href="/departments/create">Criar Departamento</a></li>
                 @endif
                 <li><a href="/profile/show">Minha conta</a></li>
             @endauth

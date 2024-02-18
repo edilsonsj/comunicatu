@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ManagementController;
 use App\Http\Controllers\ManifestationController;
 use Illuminate\Support\Facades\Route;
@@ -51,4 +52,10 @@ Route::middleware(['web', 'admin'])->group(function () {
     Route::get('management/show/{type?}', [ManagementController::class, 'index'])->name('management.index');
     Route::get('/management/edit/{id}', [ManagementController::class, 'editAdmin']);
     Route::put('/management/update/{id}', [ManagementController::class, 'update']);
+    // Department
+    Route::get('/departments/show', [DepartmentController::class, 'index'])->name('departments.index');
+    Route::get('/departments/edit/{id}', [DepartmentController::class, 'edit']);
+    Route::get('/departments/create', [DepartmentController::class, 'create']);
+    Route::post('/departments', [DepartmentController::class, 'store']);
+    Route::delete('/departments/{id}', [DepartmentController::class, 'destroy']);
 });

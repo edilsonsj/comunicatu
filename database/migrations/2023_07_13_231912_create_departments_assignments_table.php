@@ -12,13 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('departments_assignments', function (Blueprint $table) {
-            
+            $table->id();
             $table->foreignId('department_id')
-                  ->constrained()
-                  ->onUpdate('cascade')
-                  ->onDelete('cascade');
-                  
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
             $table->string('assignment');
+            $table->timestamps();
         });
     }
 

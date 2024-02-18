@@ -33,7 +33,7 @@ class ManagementController extends Controller
         }
 
         // Executar a consulta para obter as manifestações
-        $manifestations = $query->get();
+        $manifestations = $query->get(); 
 
         // Obter os tipos únicos de manifestações para a seleção de filtro na view
         $manifestation_types = Manifestation::pluck('type')->unique();
