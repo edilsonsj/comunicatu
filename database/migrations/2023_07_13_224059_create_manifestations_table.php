@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('status');
             $table->double('lat', 10, 6);
             $table->double('lon', 10, 6);
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamp('finished_at')->nullable();
             $table->timestamps();
             

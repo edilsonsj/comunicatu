@@ -15,47 +15,87 @@ class DepartmentSeeder extends Seeder
     {
         $departments = [
             [
-                'name' => 'Departamento de Trânsito',
-                'email' => 'transito@example.com',
-                
+                'name' => 'Departamento de Segurança Pública',
+                'email' => 'segurancapublica@example.com',
             ],
             [
-                'name' => 'Departamento de Saúde',
-                'email' => 'saude@example.com',
+                'name' => 'Departamento de Desenvolvimento Econômico',
+                'email' => 'desenvolvimentoeconomico@example.com',
             ],
             [
-                'name' => 'Departamento de Educação',
-                'email' => 'educacao@example.com',
+                'name' => 'Departamento de Planejamento Urbano',
+                'email' => 'planejamentourbano@example.com',
             ],
             [
-                'name' => 'Departamento de Finanças',
-                'email' => 'financas@example.com',
+                'name' => 'Departamento de Habitação',
+                'email' => 'habitacao@example.com',
             ],
             [
-                'name' => 'Departamento de Obras',
-                'email' => 'obras@example.com',
+                'name' => 'Departamento de Transporte Público',
+                'email' => 'transportepublico@example.com',
             ],
             [
-                'name' => 'Departamento de Cultura',
-                'email' => 'cultura@example.com',
+                'name' => 'Departamento de Agricultura e Abastecimento',
+                'email' => 'agriculturaeabastecimento@example.com',
             ],
             [
-                'name' => 'Departamento de Esportes',
-                'email' => 'esportes@example.com',
+                'name' => 'Departamento de Finanças Públicas',
+                'email' => 'financaspublicas@example.com',
             ],
             [
-                'name' => 'Departamento de Meio Ambiente',
-                'email' => 'meioambiente@example.com',
+                'name' => 'Departamento de Recursos Humanos',
+                'email' => 'recursoshumanos@example.com',
             ],
             [
-                'name' => 'Departamento de Assistência Social',
-                'email' => 'assistenciasocial@example.com',
+                'name' => 'Departamento de Tecnologia da Informação',
+                'email' => 'tecnologiainformacao@example.com',
             ],
             [
-                'name' => 'Departamento de Turismo',
-                'email' => 'turismo@example.com',
+                'name' => 'Departamento de Comunicação Social',
+                'email' => 'comunicacaosocial@example.com',
             ],
+            [
+                'name' => 'Departamento de Gestão de Projetos',
+                'email' => 'gestaodeprojetos@example.com',
+            ],
+            [
+                'name' => 'Departamento de Relações Internacionais',
+                'email' => 'relacoesinternacionais@example.com',
+            ],
+            [
+                'name' => 'Departamento de Defesa Civil',
+                'email' => 'defesacivil@example.com',
+            ],
+            [
+                'name' => 'Departamento de Gestão de Resíduos',
+                'email' => 'gestaoderesiduos@example.com',
+            ],
+            [
+                'name' => 'Departamento de Controle Urbano',
+                'email' => 'controleurbano@example.com',
+            ],
+            [
+                'name' => 'Departamento de Patrimônio Histórico e Cultural',
+                'email' => 'patrimoniohistorico@example.com',
+            ],
+            [
+                'name' => 'Departamento de Política para Mulheres',
+                'email' => 'politicaparamulheres@example.com',
+            ],
+            [
+                'name' => 'Departamento de Esporte e Lazer',
+                'email' => 'esportelazer@example.com',
+            ],
+            [
+                'name' => 'Departamento de Políticas para Juventude',
+                'email' => 'politicasparajuventude@example.com',
+            ],
+            [
+                'name' => 'Departamento de Direitos Humanos',
+                'email' => 'direitoshumanos@example.com',
+            ]
         ];
+
 
         DB::table('departments')->insert($departments);
     }

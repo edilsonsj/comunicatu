@@ -17,8 +17,30 @@ class ManifestationSeeder extends Seeder
         $faker = Faker::create('pt_BR');
         $total_records = 50;
 
-        $statuses = ['Em aberto', 'Em andamento', 'Finalizada'];
-        $types = ['Complaint', 'Request', 'Feedback'];
+        $status_array = ['Em aberto', 'Em andamento', 'Finalizada'];
+        $types = [
+            'Reclamação',
+            'Solicitação',
+            'Feedback',
+            'Elogio',
+            'Denúncia',
+            'Pedido de Informação',
+            'Sugestão',
+            'Ocorrência',
+            'Consulta',
+            'Agradecimento',
+            'Pedido de Revisão',
+            'Pedido de Acesso à Informação',
+            'Pedido de Providências',
+            'Pedido de Esclarecimento',
+            'Relato de Problema',
+            'Relato de Experiência',
+            'Registro de Incidente',
+            'Registro de Ocorrência',
+            'Registro de Requerimento',
+            'Registro de Observação'
+        ];
+
 
         // Coordenadas aproximadas de Catu-Ba
         $latitudeMin = -12.3667;
@@ -31,11 +53,11 @@ class ManifestationSeeder extends Seeder
             $departmentId = random_int(1, 10);
             $description = $faker->paragraph();
             $type = $faker->randomElement($types);
-            $status = $faker->randomElement($statuses);
+            $status = $faker->randomElement($status_array);
             $lat = $faker->latitude($latitudeMin, $latitudeMax);
             $lon = $faker->longitude($longitudeMin, $longitudeMax);
             $image = $faker->word . '.' . 'png';
-            $finishedAt = $status === 'Closed' ? $faker->dateTimeBetween('-1 year', 'now') : null;
+            $finishedAt = $status === 'Finalizada' ? $faker->dateTimeBetween('-1 year', 'now') : null;
 
             DB::table('manifestations')->insert([
                 'user_id' => $userId,

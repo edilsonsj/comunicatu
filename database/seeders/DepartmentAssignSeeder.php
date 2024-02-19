@@ -23,9 +23,20 @@ class DepartmentAssignSeeder extends Seeder
             'Assistência Social',
             'Educação',
             'Saúde',
-            'Cultura',
-            'Turismo',
+            'Segurança Pública',
+            'Desenvolvimento Econômico',
+            'Planejamento Urbano',
+            'Habitação',
+            'Transporte Público',
+            'Agricultura e Abastecimento',
+            'Finanças Públicas',
+            'Defesa Civil',
+            'Gestão de Resíduos',
+            'Controle Urbano',
+            'Patrimônio Histórico e Cultural',
+            'Esporte e Lazer'
         ];
+
 
         foreach ($assignments as $index => $assignment) {
             $departmentId = $index + 1;
