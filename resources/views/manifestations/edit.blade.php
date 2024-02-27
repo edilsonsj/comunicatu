@@ -20,9 +20,7 @@
         <br>
         <label for="description">Descrição</label>
         <br>
-        <textarea name="description" id="" cols="30" rows="10" placeholder="Escreva aqui sua descricao">
-            {{ $manifestation->description }}
-        </textarea>
+        <textarea name="description" id="" cols="30" rows="10" placeholder="Escreva aqui sua descricao">{{ $manifestation->description }}</textarea>
         <br>
         <br>
         <img style="height: 100px;" src="/img/manifestations/{{ $manifestation->image }}" alt="">

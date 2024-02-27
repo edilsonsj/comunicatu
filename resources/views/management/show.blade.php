@@ -78,7 +78,7 @@
                     <td>{{ $manifestation->status }}</td>
                     <td>{{ $manifestation->created_at }}</td>
                     <td>
-                        <a id="edit-button" href="/manifestations/edit/{{ $manifestation->id }}">Editar</a>
+                        <a id="edit-button" href="/management/edit/{{ $manifestation->id }}">Editar</a>
                         <br>
                         <form action="/manifestations/{{ $manifestation->id }}" method="post">
                             @csrf

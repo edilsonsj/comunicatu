@@ -33,7 +33,7 @@ class ManagementController extends Controller
         }
 
         // Executar a consulta para obter as manifestações
-        $manifestations = $query->get(); 
+        $manifestations = $query->get();
 
         // Obter os tipos únicos de manifestações para a seleção de filtro na view
         $manifestation_types = Manifestation::pluck('type')->unique();
@@ -57,10 +57,12 @@ class ManagementController extends Controller
     public function editAdmin($id)
     {
         $assignments = DB::table('departments_assignments')->pluck('assignment');
+        $statuses = Manifestation::distinct()->pluck('status');
 
         $manifestation = Manifestation::findOrFail($id);
-        return view('management.edit', compact('manifestation'), ['assignments' => $assignments]);
+        return view('management.edit', compact('manifestation', 'assignments', 'statuses'));
     }
+
 
 
     public function update(Request $request)
@@ -69,6 +71,6 @@ class ManagementController extends Controller
 
         Manifestation::findOrFail($request->id)->update($data);
 
-        return redirect('manifestations/show')->with('msg', 'Manifestação alterada com sucesso!');
+        return redirect('management/show')->with('msg', 'Manifestação alterada com sucesso!');
     }
 }

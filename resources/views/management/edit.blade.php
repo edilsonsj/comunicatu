@@ -15,22 +15,31 @@
         <p>{{ $manifestation->description }}</p>
         <br>
         <img style="height: 100px;" src="/img/manifestations/{{ $manifestation->image }}" alt="">
-        
+
         <br>
-        
-        <label for="type">Selecione o tipo de manifestação</label>
+
+        <label for="type">Selecione o tipo de manifestação: </label>
         <select name="type" id="">
             <option value="{{ $manifestation->type }}">{{ $manifestation->type }}</option>
             @foreach ($assignments as $assignment)
                 <option value="{{ $assignment }}">{{ $assignment }}</option>
             @endforeach
         </select>
-        
+
+        <br>
+        <label for="status">Selecione o status:</label>
+        <select name="status" id="">
+            <option value="{{ $manifestation->status }}">{{ $manifestation->status }}</option>
+            @foreach ($statuses as $sts)
+                <option value="{{$sts}}">{{$sts}}</option>
+            @endforeach
+        </select>
+
         <script src='https://unpkg.com/leaflet@1.8.0/dist/leaflet.js' crossorigin=''></script>
         <script src='https://unpkg.com/leaflet-control-geocoder@2.4.0/dist/Control.Geocoder.js'></script>
-        
-        
-        
+
+
+
         <div id="map" style="height:400px; width: 800px;" class="my-3">
             <script>
                 const map = L.map('map').setView([{{ $manifestation->lat }}, {{ $manifestation->lon }}], 16);

@@ -52,7 +52,7 @@ class ManifestationController extends Controller
 
         $manifestation->save();
 
-        return redirect('/')->with('msg', 'Manifestacao criada com sucesso!');
+        return redirect('/manifestations/show')->with('msg', 'Manifestacao criada com sucesso!');
     }
 
     public function showMap()
