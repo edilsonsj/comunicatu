@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-        <script src='https://unpkg.com/leaflet@1.8.0/dist/leaflet.js' crossorigin=''></script>
+    <script src='https://unpkg.com/leaflet@1.8.0/dist/leaflet.js' crossorigin=''></script>
     <script src='https://unpkg.com/leaflet-control-geocoder@2.4.0/dist/Control.Geocoder.js'></script>
 
     <div class="container">
@@ -16,24 +16,19 @@
                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                 }).addTo(map);
 
-                manifestations.forEach(function(coord) {
-                    L.marker([coord.lat, coord.lon]).addTo(map)
-                        .bindPopup(coord.type, coord.status).openPopup();
+                manifestations.forEach(function(manifestation) {
+                    const popupContent = `
+                        <b>ID:</b> ${manifestation.id}<br>
+                        <b>Tipo:</b> ${manifestation.type}<br>
+                        <b>Status:</b> ${manifestation.status}<br>
+                        <b>Descrição:</b> ${manifestation.description}<br>
+                        <b>Data de Criação:</b> ${manifestation.created_at}<br>
+                    `;
+                    L.marker([manifestation.lat, manifestation.lon]).addTo(map)
+                        .bindPopup(popupContent);
                 });
             </script>
         </div>
-
-        {{-- <div class="manifestation-types-container">
-            @foreach ($manifestations_types as $type)
-                <span class="manifestation-type-button">
-                    <button>
-                        <a id="type-button" href="{{ route('management.type', ['type' => $type]) }}">
-                            {{ $type }}
-                        </a>
-                    </button>
-                </span>
-            @endforeach
-        </div> --}}
 
         <div class="filters-container">
             <form action="{{ route('management.index') }}" method="GET">
@@ -55,7 +50,7 @@
                 <br>
                 <label for="start_date">Data de início:</label>
                 <input type="date" id="start_date" name="start_date">
-                <br>    
+                <br>
                 <label for="end_date">Data de término:</label>
                 <input type="date" id="end_date" name="end_date">
                 <br>
